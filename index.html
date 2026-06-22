@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kharazm Saeedi — Junior Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F1B2D;
+    --ink-soft:#162540;
+    --paper:#F2EFE9;
+    --paper-dim:#E7E2D8;
+    --green:#5FD68A;
+    --amber:#E8A33D;
+    --slate:#8B98A8;
+    --slate-dark:#5B6677;
+    --line: rgba(242,239,233,0.12);
+    --line-soft: rgba(15,27,45,0.10);
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+    --maxw: 1080px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--sans);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  ::selection{ background:var(--green); color:var(--ink); }
+
+  a{ color:inherit; text-decoration:none; }
+
+  :focus-visible{
+    outline:2px solid var(--green);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- noise / grid texture ---------- */
+  .bg-grid{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(242,239,233,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(242,239,233,0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+  }
+
+  /* ---------- top nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(10px);
+    background: rgba(15,27,45,0.78);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .brand{
+    font-family:var(--mono); font-weight:700; font-size:15px;
+    letter-spacing:0.02em;
+    display:flex; align-items:center; gap:8px;
+  }
+  .brand .dot{ width:8px; height:8px; border-radius:50%; background:var(--green); box-shadow:0 0 10px var(--green); }
+  .navlinks{ display:flex; gap:36px; font-family:var(--mono); font-size:13px; color:var(--slate); }
+  .navlinks a{ position:relative; padding:4px 0; transition:color .2s; }
+  .navlinks a:hover{ color:var(--paper); }
+  .navlinks a::after{
+    content:''; position:absolute; left:0; bottom:-2px; height:1px; width:0%;
+    background:var(--green); transition:width .25s ease;
+  }
+  .navlinks a:hover::after{ width:100%; }
+  .navlinks .num{ color:var(--green); margin-right:4px; }
+
+  @media (max-width:720px){ .navlinks{ display:none; } }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative; z-index:1;
+    padding:120px 0 100px;
+  }
+  .terminal{
+    border:1px solid var(--line);
+    border-radius:10px;
+    background: linear-gradient(180deg, rgba(242,239,233,0.045), rgba(242,239,233,0.015));
+    box-shadow: 0 30px 60px -30px rgba(0,0,0,0.6);
+    overflow:hidden;
+    max-width:680px;
+  }
+  .term-bar{
+    display:flex; align-items:center; gap:8px;
+    padding:11px 16px;
+    background:rgba(242,239,233,0.04);
+    border-bottom:1px solid var(--line);
+  }
+  .term-bar .dot-group{ display:flex; align-items:center; gap:8px; }
+  .term-bar .dot-group span{ width:10px; height:10px; border-radius:50%; display:inline-block; }
+  .term-bar .dot-group span:nth-child(1){ background:#E8746A; }
+  .term-bar .dot-group span:nth-child(2){ background:var(--amber); }
+  .term-bar .dot-group span:nth-child(3){ background:var(--green); }
+  .term-bar .term-title{
+    margin-left:10px; font-family:var(--mono); font-size:12px; color:var(--slate);
+    white-space:nowrap; overflow:hidden;
+  }
+  .term-body{
+    padding:22px 24px 28px;
+    font-family:var(--mono); font-size:14.5px; color:var(--paper);
+  }
+  .term-body .ln{ display:flex; gap:10px; margin-bottom:6px; flex-wrap:wrap; }
+  .term-body .prompt{ color:var(--green); white-space:nowrap; }
+  .term-body .cmd{ color:var(--paper); }
+  .term-body .out{ color:var(--slate); padding-left:20px; }
+  .cursor{
+    display:inline-block; width:8px; height:16px; background:var(--green);
+    margin-left:2px; vertical-align:-3px;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .hero-title{
+    margin-top:48px;
+    font-family:var(--mono);
+    font-weight:800;
+    font-size:clamp(34px, 5.4vw, 58px);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    max-width:780px;
+  }
+  .hero-title .accent{ color:var(--green); }
+  .hero-sub{
+    margin-top:22px; max-width:560px;
+    font-size:17px; color:var(--slate); line-height:1.75;
+  }
+  .hero-cta{
+    margin-top:36px; display:flex; gap:16px; flex-wrap:wrap;
+  }
+  .btn{
+    font-family:var(--mono); font-size:13.5px; font-weight:600;
+    padding:13px 22px; border-radius:7px;
+    display:inline-flex; align-items:center; gap:8px;
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .btn-solid{ background:var(--green); color:var(--ink); }
+  .btn-solid:hover{ transform:translateY(-2px); box-shadow:0 10px 24px -8px rgba(95,214,138,0.55); }
+  .btn-ghost{ border:1px solid var(--line); color:var(--paper); }
+  .btn-ghost:hover{ border-color:var(--green); color:var(--green); transform:translateY(-2px); }
+
+  /* ---------- section shell ---------- */
+  section{ position:relative; z-index:1; padding:88px 0; }
+  .section-head{
+    display:flex; align-items:baseline; gap:14px; margin-bottom:48px;
+  }
+  .section-head .tag{
+    font-family:var(--mono); font-size:13px; color:var(--green);
+    border:1px solid rgba(95,214,138,0.35); border-radius:5px;
+    padding:3px 9px;
+  }
+  .section-head h2{
+    font-family:var(--mono); font-weight:700; font-size:26px; letter-spacing:-0.01em;
+  }
+  .section-rule{ flex:1; height:1px; background:var(--line); }
+
+  /* ---------- about ---------- */
+  .about-grid{
+    display:grid; grid-template-columns: 1.1fr 0.9fr; gap:56px; align-items:start;
+  }
+  .about-grid p{ color:var(--slate); font-size:16px; margin-bottom:18px; max-width:520px; }
+  .about-grid p strong{ color:var(--paper); font-weight:600; }
+  .stack-card{
+    border:1px solid var(--line); border-radius:10px;
+    background:rgba(242,239,233,0.03);
+    padding:24px 26px;
+  }
+  .stack-card h3{
+    font-family:var(--mono); font-size:13px; color:var(--slate); letter-spacing:0.06em;
+    margin-bottom:16px; text-transform:uppercase;
+  }
+  .stack-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:10px 0; border-bottom:1px solid var(--line); font-size:14.5px;
+  }
+  .stack-row:last-child{ border-bottom:none; }
+  .stack-row .name{ font-weight:500; }
+  .stack-row .bar{
+    width:120px; height:5px; background:var(--line); border-radius:3px; overflow:hidden;
+  }
+  .stack-row .bar i{ display:block; height:100%; background:var(--green); border-radius:3px; }
+
+  @media (max-width: 860px){ .about-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- projects ---------- */
+  .proj-list{ display:flex; flex-direction:column; gap:1px; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  .proj{
+    display:grid; grid-template-columns: 56px 1.3fr 1.7fr auto;
+    gap:24px; align-items:center;
+    padding:26px 26px;
+    background:rgba(242,239,233,0.018);
+    border-bottom:1px solid var(--line);
+    transition:background .2s ease;
+  }
+  .proj:last-child{ border-bottom:none; }
+  .proj:hover{ background:rgba(95,214,138,0.045); }
+  .proj .idx{ font-family:var(--mono); color:var(--slate-dark); font-size:14px; }
+  .proj .meta h3{ font-family:var(--mono); font-size:16.5px; font-weight:600; margin-bottom:6px; }
+  .proj .meta .tags{ display:flex; gap:6px; flex-wrap:wrap; }
+  .proj .meta .tags span{
+    font-family:var(--mono); font-size:11px; color:var(--green);
+    background:rgba(95,214,138,0.10); border-radius:4px; padding:2px 7px;
+  }
+  .proj .desc{ font-size:14.5px; color:var(--slate); }
+  .proj .link{
+    font-family:var(--mono); font-size:13px; color:var(--paper);
+    border:1px solid var(--line); padding:9px 16px; border-radius:6px;
+    white-space:nowrap;
+    transition:.2s ease;
+  }
+  .proj .link:hover{ border-color:var(--green); color:var(--green); }
+
+  @media (max-width: 860px){
+    .proj{ grid-template-columns:1fr; gap:12px; }
+    .proj .idx{ display:none; }
+  }
+
+  /* ---------- timeline (education) ---------- */
+  .tl{ position:relative; padding-left:28px; }
+  .tl::before{
+    content:''; position:absolute; left:5px; top:6px; bottom:6px; width:1px; background:var(--line);
+  }
+  .tl-item{ position:relative; padding-bottom:34px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:''; position:absolute; left:-28px; top:4px; width:11px; height:11px; border-radius:50%;
+    background:var(--ink); border:2px solid var(--green);
+  }
+  .tl-item h3{ font-size:16px; font-weight:600; margin-bottom:4px; }
+  .tl-item .org{ font-family:var(--mono); font-size:13px; color:var(--green); margin-bottom:6px; }
+  .tl-item .note{ font-size:14px; color:var(--slate); max-width:520px; }
+
+  /* ---------- contact ---------- */
+  .contact-box{
+    border:1px solid var(--line); border-radius:14px;
+    padding:56px 48px;
+    background: linear-gradient(135deg, rgba(95,214,138,0.06), rgba(242,239,233,0.02));
+    text-align:center;
+  }
+  .contact-box h2{
+    font-family:var(--mono); font-weight:800; font-size:clamp(26px,4vw,38px); margin-bottom:14px;
+  }
+  .contact-box p{ color:var(--slate); max-width:460px; margin:0 auto 30px; font-size:15.5px; }
+  .contact-links{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+  footer{
+    position:relative; z-index:1;
+    padding:32px 0 48px; text-align:center;
+    font-family:var(--mono); font-size:12.5px; color:var(--slate-dark);
+  }
+
+  /* reveal on scroll */
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .cursor{ animation:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+
+<header>
+  <nav class="wrap">
+    <div class="brand"><span class="dot"></span>kharazm@dev</div>
+    <div class="navlinks">
+      <a href="#about"><span class="num">01.</span>About</a>
+      <a href="#projects"><span class="num">02.</span>Projects</a>
+      <a href="#education"><span class="num">03.</span>Education</a>
+      <a href="#contact"><span class="num">04.</span>Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="terminal reveal in">
+        <div class="term-bar">
+          <span class="dot-group"><span></span><span></span><span></span></span>
+          <span class="term-title">kharazm@dev &mdash; zsh</span>
+        </div>
+        <div class="term-body" id="termBody"></div>
+      </div>
+
+      <h1 class="hero-title">Building clean interfaces,<br>understanding the <span class="accent">network</span> beneath them.</h1>
+      <p class="hero-sub">I'm Kharazm Saeedi — a junior web developer studying Computer Engineering in Tehran. I build with HTML, CSS and Tailwind, and I'm just as comfortable in a terminal as I am in a browser.</p>
+
+      <div class="hero-cta">
+        <a class="btn btn-solid" href="#projects">View Projects →</a>
+        <a class="btn btn-ghost" href="https://github.com/kharazm-sa" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">01</span>
+        <h2>About</h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="reveal">
+          <p>I'm a Computer Engineering student at <strong>Islamic Azad University, Tehran North Branch</strong>, currently focused on front-end development. My work so far lives at the intersection of <strong>visual design</strong> and <strong>how systems actually work</strong> underneath.</p>
+          <p>Most of my front-end practice has gone into building real, functional layouts — a restaurant menu, an auth flow, a small business site — using semantic HTML, CSS and Tailwind. In parallel, I've worked through networking coursework based on the <strong>CompTIA Network+</strong> curriculum, and taught myself Git, version control workflows, and command-line tooling from scratch.</p>
+          <p>I like projects that reward patience: reading the error message instead of guessing, understanding why a layout breaks instead of nudging it until it looks fine.</p>
+        </div>
+
+        <div class="stack-card reveal">
+          <h3>// Comfort Level</h3>
+          <div class="stack-row"><span class="name">HTML / CSS</span><span class="bar"><i style="width:88%"></i></span></div>
+          <div class="stack-row"><span class="name">Tailwind CSS</span><span class="bar"><i style="width:75%"></i></span></div>
+          <div class="stack-row"><span class="name">Git / CLI</span><span class="bar"><i style="width:70%"></i></span></div>
+          <div class="stack-row"><span class="name">C++</span><span class="bar"><i style="width:65%"></i></span></div>
+          <div class="stack-row"><span class="name">Networking (Net+)</span><span class="bar"><i style="width:60%"></i></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">02</span>
+        <h2>Projects</h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <div class="proj-list">
+        <div class="proj reveal">
+          <div class="idx">01</div>
+          <div class="meta">
+            <h3>Business Website</h3>
+            <div class="tags"><span>HTML</span><span>CSS</span><span>Tailwind</span></div>
+          </div>
+          <div class="desc">A multi-section business site covering company info and services, built with Tailwind's utility classes for a consistent design system.</div>
+          <a class="link" href="https://github.com/kharazm-sa/Business-Website" target="_blank" rel="noopener">View Code →</a>
+        </div>
+
+        <div class="proj reveal">
+          <div class="idx">02</div>
+          <div class="meta">
+            <h3>Login &amp; Registration UI</h3>
+            <div class="tags"><span>HTML</span><span>CSS</span></div>
+          </div>
+          <div class="desc">A user account interface with sign-in and sign-up flows — focused on form structure, input states, and responsive layout.</div>
+          <a class="link" href="https://github.com/kharazm-sa/Registration" target="_blank" rel="noopener">View Code →</a>
+        </div>
+
+        <div class="proj reveal">
+          <div class="idx">03</div>
+          <div class="meta">
+            <h3>Restaurant Menu Page</h3>
+            <div class="tags"><span>HTML</span><span>CSS</span></div>
+          </div>
+          <div class="desc">A responsive food-ordering menu layout, built around semantic markup and clear visual hierarchy.</div>
+          <a class="link" href="https://github.com/kharazm-sa/MacDonald" target="_blank" rel="noopener">View Code →</a>
+        </div>
+
+        <div class="proj reveal">
+          <div class="idx">04</div>
+          <div class="meta">
+            <h3>Numeric Data Processor</h3>
+            <div class="tags"><span>C++</span></div>
+          </div>
+          <div class="desc">A console app that reads numbers from a .txt file and runs operations — averages, factorials, binary shifts — each writing its own output file.</div>
+          <a class="link" href="https://github.com/kharazm-sa/CppProject" target="_blank" rel="noopener">View Code →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">03</span>
+        <h2>Education</h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <div class="tl">
+        <div class="tl-item reveal">
+          <h3>B.Sc. Computer Engineering — In Progress</h3>
+          <div class="org">Islamic Azad University, Tehran North Branch · 2024 – Present</div>
+          <div class="note">Coursework spanning programming fundamentals, networking, and software development.</div>
+        </div>
+        <div class="tl-item reveal">
+          <h3>Network+ (CompTIA-Based Curriculum)</h3>
+          <div class="org">Tehran Technical Complex, Zafaranieh</div>
+          <div class="note">Course certificate. Curriculum and final exam modeled on the CompTIA Network+ standard.</div>
+        </div>
+        <div class="tl-item reveal">
+          <h3>HTML &amp; CSS</h3>
+          <div class="org">SabzLearn.com</div>
+          <div class="note">Course certificate — front-end fundamentals and responsive layout techniques.</div>
+        </div>
+        <div class="tl-item reveal">
+          <h3>C++ Programming</h3>
+          <div class="org">Tehran Technical Complex, Zafaranieh</div>
+          <div class="note">Course certificate — from language basics through file handling and structured programs.</div>
+        </div>
+        <div class="tl-item reveal">
+          <h3>Tailwind CSS, Git &amp; Version Control</h3>
+          <div class="org">Self-studied</div>
+          <div class="note">Learned through online coursework and hands-on project work.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-box reveal">
+        <h2>Let's build something.</h2>
+        <p>Open to junior developer roles and internships. If you think I'd be a good fit for your team, I'd love to hear from you.</p>
+        <div class="contact-links">
+          <a class="btn btn-solid" href="mailto:1381kharazm@gmail.com">Email Me →</a>
+          <a class="btn btn-ghost" href="https://github.com/kharazm-sa" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">kharazm saeedi — built with HTML, CSS &amp; a healthy respect for the command line.</div>
+</footer>
+
+<script>
+  // Typed terminal intro
+  const lines = [
+    { type:'cmd', prompt:'~ $', text:'whoami' },
+    { type:'out', text:'kharazm_saeedi — junior web developer' },
+    { type:'cmd', prompt:'~ $', text:'cat skills.txt' },
+    { type:'out', text:'HTML · CSS · Tailwind · Git · C++ · Network+' },
+    { type:'cmd', prompt:'~ $', text:'./run portfolio.sh' }
+  ];
+
+  const termBody = document.getElementById('termBody');
+  let li = 0, ci = 0;
+
+  function typeLine(){
+    if(li >= lines.length){ return; }
+    const line = lines[li];
+    const row = document.createElement('div');
+    row.className = 'ln';
+    termBody.appendChild(row);
+
+    if(line.type === 'cmd'){
+      const promptSpan = document.createElement('span');
+      promptSpan.className = 'prompt';
+      promptSpan.textContent = line.prompt;
+      const cmdSpan = document.createElement('span');
+      cmdSpan.className = 'cmd';
+      row.appendChild(promptSpan);
+      row.appendChild(cmdSpan);
+
+      const cursor = document.createElement('span');
+      cursor.className = 'cursor';
+      row.appendChild(cursor);
+
+      let i = 0;
+      const text = line.text;
+      const typer = setInterval(() => {
+        cmdSpan.textContent += text[i];
+        i++;
+        if(i >= text.length){
+          clearInterval(typer);
+          cursor.remove();
+          li++;
+          setTimeout(typeLine, 220);
+        }
+      }, 38);
+    } else {
+      row.classList.add('out');
+      row.textContent = line.text;
+      li++;
+      setTimeout(typeLine, 320);
+    }
+  }
+  typeLine();
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
