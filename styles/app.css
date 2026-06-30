@@ -59,7 +59,13 @@
   /* ---------- noise / grid texture ---------- */
   
   .bg-grid{
-    position:fixed; inset:0; z-index:0; pointer-events:none;
+    position:fixed; 
+    
+    inset:0; 
+    
+    z-index:0; 
+    
+    pointer-events:none;
     background-image:
       linear-gradient(rgba(242,239,233,0.035) 1px, transparent 1px),
       linear-gradient(90deg, rgba(242,239,233,0.035) 1px, transparent 1px);
@@ -70,21 +76,29 @@
   /* ---------- top nav ---------- */
   
   header{
-    position:sticky; top:0; z-index:50;
+    position:sticky; 
+    top:0; 
+    z-index:50;
     backdrop-filter: blur(10px);
     background: rgba(15,27,45,0.78);
     border-bottom:1px solid var(--line);
   }
   
   nav.wrap{
-    display:flex; align-items:center; justify-content:space-between;
+    display:flex;
+    align-items:center; 
+    justify-content:space-between;
     height:64px;
   }
   
   .brand{
-    font-family:var(--mono); font-weight:700; font-size:15px;
+    font-family:var(--mono); 
+    font-weight:700; 
+    font-size:15px;
     letter-spacing:0.02em;
-    display:flex; align-items:center; gap:8px;
+    display:flex; 
+    align-items:center; 
+    gap:8px;
   }
   
   .brand .dot{ 
@@ -254,8 +268,11 @@
   }
 
   .hero-sub{
-    margin-top:22px; max-width:560px;
-    font-size:17px; color:var(--slate); line-height:1.75;
+    margin-top:22px; 
+    max-width:560px;
+    font-size:17px; 
+    color:var(--slate); 
+    line-height:1.75;
   }
 
   .hero-cta{
@@ -277,15 +294,18 @@
     transition: transform .18s ease, box-shadow .18s ease;
   }
 
-  .btn-solid{ background:var(--green); 
+  .btn-solid{ 
+    background:var(--green); 
     color:var(--ink); 
   }
   
-  .btn-solid:hover{ transform:translateY(-2px); 
+  .btn-solid:hover{ 
+    transform:translateY(-2px); 
     box-shadow:0 10px 24px -8px rgba(95,214,138,0.55); 
   }
   
-  .btn-ghost{ border:1px solid var(--line); 
+  .btn-ghost{ 
+    border:1px solid var(--line); 
     color:var(--paper); 
   }
   
@@ -615,4 +635,3 @@
     }
   }
 
-  
