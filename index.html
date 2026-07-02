@@ -1,188 +1,329 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kharazm Dev</title>
-<link rel="stylesheet" href="./styles/app.css">
-<link rel="icon" type="image/svg" href="kh-favicon (1).svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Kharazm Saeedi - Junior Web Developer & Computer Engineering student in Tehran. HTML, CSS, Tailwind projects including business site, login UI, and restaurant menu."
+    />
+    <meta
+      name="keywords"
+      content="junior web developer, front-end developer, HTML CSS Tailwind, Tehran, portfolio"
+    />
+    <meta name="author" content="Kharazm Saeedi" />
 
-</head>
-<body>
+    <meta
+      property="og:title"
+      content="Kharazm Saeedi | Junior Web Developer Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="HTML, CSS & Tailwind projects — business site, login UI, restaurant menu, and a C++ data processor."
+    />
+    <meta property="og:url" content="https://kharazm-sa.github.io/" />
+    <meta property="og:type" content="website" />
 
-<div class="bg-grid"></div>
+    <title>Kharazm Saeedi | Junior Web Developer</title>
+    <link rel="stylesheet" href="./styles/app.css" />
+    <link rel="icon" type="image/svg" href="kh-favicon (1).svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<header>
-  <nav class="wrap">
-    <div class="brand"><span class="dot"></span>kharazm@dev</div>
-    <div class="navlinks">
-      <a href="#about"><span class="num">01.</span>About</a>
-      <a href="#projects"><span class="num">02.</span>Projects</a>
-      <a href="#education"><span class="num">03.</span>Education</a>
-      <a href="#contact"><span class="num">04.</span>Contact</a>
-    </div>
-  </nav>
-</header>
+  <body>
+    <div class="bg-grid"></div>
 
-<main>
-  <section class="hero">
-    <div class="wrap">
-      <div class="terminal reveal in">
-        <div class="term-bar">
-          <span class="dot-group"><span></span><span></span><span></span></span>
-          <span class="term-title">kharazm@dev &mdash; zsh</span>
+    <header>
+      <nav class="wrap">
+        <div class="brand"><span class="dot"></span>kharazm@dev</div>
+        <div class="navlinks">
+          <a href="#about"><span class="num">01.</span>About</a>
+          <a href="#projects"><span class="num">02.</span>Projects</a>
+          <a href="#education"><span class="num">03.</span>Education</a>
+          <a href="#contact"><span class="num">04.</span>Contact</a>
         </div>
-        <div class="term-body" id="termBody"></div>
-      </div>
+      </nav>
+    </header>
 
-      <h1 class="hero-title">Building clean interfaces,<br>understanding the <span class="accent">network</span> beneath them.</h1>
-      <p class="hero-sub">I'm Kharazm Saeedi — a junior web developer studying Computer Engineering in Tehran. I build with HTML, CSS and Tailwind, and I'm just as comfortable in a terminal as I am in a browser.</p>
-
-      <div class="hero-cta">
-        <a class="btn btn-solid" href="#projects">View Projects →</a>
-        <a class="btn btn-ghost" href="https://github.com/kharazm-sa" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="tag">01</span>
-        <h2>About</h2>
-        <div class="section-rule"></div>
-      </div>
-
-      <div class="about-grid">
-        <div class="reveal">
-          <p>I'm a Computer Engineering student at <strong>Islamic Azad University, Tehran North Branch</strong>, currently focused on front-end development. My work so far lives at the intersection of <strong>visual design</strong> and <strong>how systems actually work</strong> underneath.</p>
-          <p>Most of my front-end practice has gone into building real, functional layouts — a restaurant menu, an auth flow, a small business site — using semantic HTML, CSS and Tailwind. In parallel, I've worked through networking coursework based on the <strong>CompTIA Network+</strong> curriculum, and taught myself Git, version control workflows, and command-line tooling from scratch.</p>
-          <p>I like projects that reward patience: reading the error message instead of guessing, understanding why a layout breaks instead of nudging it until it looks fine.</p>
-        </div>
-
-        <div class="stack-card reveal">
-          <h3>// Comfort Level</h3>
-          <div class="stack-row"><span class="name">HTML / CSS</span><span class="bar"><i style="width:90%"></i></span></div>
-          <div class="stack-row"><span class="name">Tailwind CSS</span><span class="bar"><i style="width:65%"></i></span></div>
-          <div class="stack-row"><span class="name">Git / CLI</span><span class="bar"><i style="width:40%"></i></span></div>
-          <div class="stack-row"><span class="name">C++</span><span class="bar"><i style="width:20%"></i></span></div>
-          <div class="stack-row"><span class="name">Networking (Net+)</span><span class="bar"><i style="width:45%"></i></span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="tag">02</span>
-        <h2>Projects</h2>
-        <div class="section-rule"></div>
-      </div>
-
-      <div class="proj-list">
-        <div class="proj reveal">
-          <div class="idx">01</div>
-          <div class="meta">
-            <h3>Business Website</h3>
-            <div class="tags"><span>HTML</span><span>CSS</span><span>Tailwind</span></div>
+    <main>
+      <section class="hero">
+        <div class="wrap">
+          <div class="terminal reveal in">
+            <div class="term-bar">
+              <span class="dot-group"
+                ><span></span><span></span><span></span
+              ></span>
+              <span class="term-title">kharazm@dev &mdash; zsh</span>
+            </div>
+            <div class="term-body" id="termBody"></div>
           </div>
-          <div class="desc">A multi-section business site covering company info and services, built with Tailwind's utility classes for a consistent design system.</div>
-          <a class="link" href="https://github.com/kharazm-sa/Business-Website" target="_blank" rel="noopener">View Code →</a>
-        </div>
 
-        <div class="proj reveal">
-          <div class="idx">02</div>
-          <div class="meta">
-            <h3>Login &amp; Registration UI</h3>
-            <div class="tags"><span>HTML</span><span>CSS</span></div>
+          <h1 class="hero-title">
+            Building clean interfaces,<br />understanding the
+            <span class="accent">network</span> beneath them.
+          </h1>
+          <p class="hero-sub">
+            I'm Kharazm Saeedi — a junior web developer studying Computer
+            Engineering in Tehran. I build with HTML, CSS and Tailwind, and I'm
+            just as comfortable in a terminal as I am in a browser.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn btn-solid" href="#projects">View Projects →</a>
+            <a
+              class="btn btn-ghost"
+              href="https://github.com/kharazm-sa"
+              target="_blank"
+              rel="noopener"
+              >GitHub ↗</a
+            >
           </div>
-          <div class="desc">A user account interface with sign-in and sign-up flows — focused on form structure, input states, and responsive layout.</div>
-          <a class="link" href="https://github.com/kharazm-sa/Registration" target="_blank" rel="noopener">View Code →</a>
         </div>
+      </section>
 
-        <div class="proj reveal">
-          <div class="idx">03</div>
-          <div class="meta">
-            <h3>Restaurant Menu Page</h3>
-            <div class="tags"><span>HTML</span><span>CSS</span></div>
+      <section id="about">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="tag">01</span>
+            <h2>About</h2>
+            <div class="section-rule"></div>
           </div>
-          <div class="desc">A responsive food-ordering menu layout, built around semantic markup and clear visual hierarchy.</div>
-          <a class="link" href="https://github.com/kharazm-sa/MacDonald" target="_blank" rel="noopener">View Code →</a>
-        </div>
 
-        <div class="proj reveal">
-          <div class="idx">04</div>
-          <div class="meta">
-            <h3>Numeric Data Processor</h3>
-            <div class="tags"><span>C++</span></div>
+          <div class="about-grid">
+            <div class="reveal">
+              <p>
+                I'm a Computer Engineering student at
+                <strong>Islamic Azad University, Tehran North Branch</strong>,
+                currently focused on front-end development. My work so far lives
+                at the intersection of <strong>visual design</strong> and
+                <strong>how systems actually work</strong> underneath.
+              </p>
+              <p>
+                Most of my front-end practice has gone into building real,
+                functional layouts — a restaurant menu, an auth flow, a small
+                business site — using semantic HTML, CSS and Tailwind. In
+                parallel, I've worked through networking coursework based on the
+                <strong>CompTIA Network+</strong> curriculum, and taught myself
+                Git, version control workflows, and command-line tooling from
+                scratch.
+              </p>
+              <p>
+                I like projects that reward patience: reading the error message
+                instead of guessing, understanding why a layout breaks instead
+                of nudging it until it looks fine.
+              </p>
+            </div>
+
+            <div class="stack-card reveal">
+              <h3>// Comfort Level</h3>
+              <div class="stack-row">
+                <span class="name">HTML / CSS</span
+                ><span class="bar"><i style="width: 90%"></i></span>
+              </div>
+              <div class="stack-row">
+                <span class="name">Tailwind CSS</span
+                ><span class="bar"><i style="width: 65%"></i></span>
+              </div>
+              <div class="stack-row">
+                <span class="name">Git / CLI</span
+                ><span class="bar"><i style="width: 40%"></i></span>
+              </div>
+              <div class="stack-row">
+                <span class="name">C++</span
+                ><span class="bar"><i style="width: 20%"></i></span>
+              </div>
+              <div class="stack-row">
+                <span class="name">Networking (Net+)</span
+                ><span class="bar"><i style="width: 45%"></i></span>
+              </div>
+            </div>
           </div>
-          <div class="desc">A console app that reads numbers from a .txt file and runs operations — averages, factorials, binary shifts — each writing its own output file.</div>
-          <a class="link" href="https://github.com/kharazm-sa/CppProject" target="_blank" rel="noopener">View Code →</a>
         </div>
+      </section>
+
+      <section id="projects">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="tag">02</span>
+            <h2>Projects</h2>
+            <div class="section-rule"></div>
+          </div>
+
+          <div class="proj-list">
+            <div class="proj reveal">
+              <div class="idx">01</div>
+              <div class="meta">
+                <h3>Business Website</h3>
+                <div class="tags">
+                  <span>HTML</span><span>CSS</span><span>Tailwind</span>
+                </div>
+              </div>
+              <div class="desc">
+                A multi-section business site covering company info and
+                services, built with Tailwind's utility classes for a consistent
+                design system.
+              </div>
+              <a
+                class="link"
+                href="https://github.com/kharazm-sa/Business-Website"
+                target="_blank"
+                rel="noopener"
+                >View Code →</a
+              >
+            </div>
+
+            <div class="proj reveal">
+              <div class="idx">02</div>
+              <div class="meta">
+                <h3>Login &amp; Registration UI</h3>
+                <div class="tags"><span>HTML</span><span>CSS</span></div>
+              </div>
+              <div class="desc">
+                A user account interface with sign-in and sign-up flows —
+                focused on form structure, input states, and responsive layout.
+              </div>
+              <a
+                class="link"
+                href="https://github.com/kharazm-sa/Registration"
+                target="_blank"
+                rel="noopener"
+                >View Code →</a
+              >
+            </div>
+
+            <div class="proj reveal">
+              <div class="idx">03</div>
+              <div class="meta">
+                <h3>Restaurant Menu Page</h3>
+                <div class="tags"><span>HTML</span><span>CSS</span></div>
+              </div>
+              <div class="desc">
+                A responsive food-ordering menu layout, built around semantic
+                markup and clear visual hierarchy.
+              </div>
+              <a
+                class="link"
+                href="https://github.com/kharazm-sa/MacDonald"
+                target="_blank"
+                rel="noopener"
+                >View Code →</a
+              >
+            </div>
+
+            <div class="proj reveal">
+              <div class="idx">04</div>
+              <div class="meta">
+                <h3>Numeric Data Processor</h3>
+                <div class="tags"><span>C++</span></div>
+              </div>
+              <div class="desc">
+                A console app that reads numbers from a .txt file and runs
+                operations — averages, factorials, binary shifts — each writing
+                its own output file.
+              </div>
+              <a
+                class="link"
+                href="https://github.com/kharazm-sa/CppProject"
+                target="_blank"
+                rel="noopener"
+                >View Code →</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="education">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="tag">03</span>
+            <h2>Education</h2>
+            <div class="section-rule"></div>
+          </div>
+
+          <div class="tl">
+            <div class="tl-item reveal">
+              <h3>B.Sc. Computer Engineering — In Progress</h3>
+              <div class="org">
+                Islamic Azad University, Tehran North Branch · 2024 – Present
+              </div>
+              <div class="note">
+                Coursework spanning programming fundamentals, networking, and
+                software development.
+              </div>
+            </div>
+            <div class="tl-item reveal">
+              <h3>Network+ (CompTIA-Based Curriculum)</h3>
+              <div class="org">Tehran Technical Complex, Zafaranieh</div>
+              <div class="note">
+                Course certificate. Curriculum and final exam modeled on the
+                CompTIA Network+ standard.
+              </div>
+            </div>
+            <div class="tl-item reveal">
+              <h3>HTML &amp; CSS</h3>
+              <div class="org">SabzLearn.com</div>
+              <div class="note">
+                Course certificate — front-end fundamentals and responsive
+                layout techniques.
+              </div>
+            </div>
+            <div class="tl-item reveal">
+              <h3>C++ Programming</h3>
+              <div class="org">Tehran Technical Complex, Zafaranieh</div>
+              <div class="note">
+                Course certificate — from language basics through file handling
+                and structured programs.
+              </div>
+            </div>
+            <div class="tl-item reveal">
+              <h3>Tailwind CSS, Git &amp; Version Control</h3>
+              <div class="org">Self-studied</div>
+              <div class="note">
+                Learned through online coursework and hands-on project work.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="wrap">
+          <div class="contact-box reveal">
+            <h2>Let's build something.</h2>
+            <p>
+              Open to junior developer roles and internships. If you think I'd
+              be a good fit for your team, I'd love to hear from you.
+            </p>
+            <div class="contact-links">
+              <a class="btn btn-solid" href="mailto:1381kharazm@gmail.com"
+                >Email Me →</a
+              >
+              <a
+                class="btn btn-ghost"
+                href="https://github.com/kharazm-sa"
+                target="_blank"
+                rel="noopener"
+                >GitHub ↗</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        kharazm saeedi — built with HTML, CSS &amp; a healthy respect for the
+        command line.
       </div>
-    </div>
-  </section>
+    </footer>
 
-  <section id="education">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="tag">03</span>
-        <h2>Education</h2>
-        <div class="section-rule"></div>
-      </div>
-
-      <div class="tl">
-        <div class="tl-item reveal">
-          <h3>B.Sc. Computer Engineering — In Progress</h3>
-          <div class="org">Islamic Azad University, Tehran North Branch · 2024 – Present</div>
-          <div class="note">Coursework spanning programming fundamentals, networking, and software development.</div>
-        </div>
-        <div class="tl-item reveal">
-          <h3>Network+ (CompTIA-Based Curriculum)</h3>
-          <div class="org">Tehran Technical Complex, Zafaranieh</div>
-          <div class="note">Course certificate. Curriculum and final exam modeled on the CompTIA Network+ standard.</div>
-        </div>
-        <div class="tl-item reveal">
-          <h3>HTML &amp; CSS</h3>
-          <div class="org">SabzLearn.com</div>
-          <div class="note">Course certificate — front-end fundamentals and responsive layout techniques.</div>
-        </div>
-        <div class="tl-item reveal">
-          <h3>C++ Programming</h3>
-          <div class="org">Tehran Technical Complex, Zafaranieh</div>
-          <div class="note">Course certificate — from language basics through file handling and structured programs.</div>
-        </div>
-        <div class="tl-item reveal">
-          <h3>Tailwind CSS, Git &amp; Version Control</h3>
-          <div class="org">Self-studied</div>
-          <div class="note">Learned through online coursework and hands-on project work.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="wrap">
-      <div class="contact-box reveal">
-        <h2>Let's build something.</h2>
-        <p>Open to junior developer roles and internships. If you think I'd be a good fit for your team, I'd love to hear from you.</p>
-        <div class="contact-links">
-          <a class="btn btn-solid" href="mailto:1381kharazm@gmail.com">Email Me →</a>
-          <a class="btn btn-ghost" href="https://github.com/kharazm-sa" target="_blank" rel="noopener">GitHub ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap">kharazm saeedi — built with HTML, CSS &amp; a healthy respect for the command line.</div>
-</footer>
-
-  <script src="./JS/app.js"></script>
-</body>
+    <script src="./JS/app.js"></script>
+  </body>
 </html>
