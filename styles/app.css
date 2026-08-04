@@ -408,7 +408,7 @@
   }
 
   .stack-row .bar{
-    width:120px; 
+    width:140px; 
     height:5px; 
     background:var(--line); 
     border-radius:3px; 
@@ -420,6 +420,116 @@
     height:100%; 
     background:var(--green); 
     border-radius:3px; 
+  }
+
+  .stack-row:last-child .bar{
+    height: auto !important;
+    color: var(--paper);
+    background: none;
+    color:  var(--paper);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .loud-circle{
+    height: .7rem;
+    width: .7rem;
+    background-color: var(--green);
+    border-radius: 100%;
+    animation: loud-circle 1s infinite ease-in;
+  }
+
+  .louding-dots{
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+  }
+
+  .louding-dots .dot1{
+    background-color: var(--paper);
+    height: 2px;
+    width: 2px;
+    border-radius: 100%;
+    animation: louding-dots-one .8s  .4s infinite ease;
+  }
+
+  .louding-dots .dot2{
+    background-color: var(--paper);
+    height: 2px;
+    width: 2px;
+    border-radius: 100%;  
+    animation: louding-dots-two .8s  .7s infinite ease;
+  }
+
+  .louding-dots .dot3{
+    background-color: var(--paper);
+    height: 2px;
+    width: 2px;
+    border-radius: 100%;
+    animation: louding-dots-three .8s 1s infinite ease;
+  }
+
+  @keyframes loud-circle {
+    0%{
+      transform: scale(0);
+      opacity: .2;
+    }
+    50%{
+      opacity: 1;
+      transform: scale(1);
+    }
+    100%{
+      opacity: .2;
+      transform: scale(0);
+    }
+  }
+
+  @keyframes louding-dots-one {
+    0%{
+      transform: scale(0);
+      opacity: .2;
+    }
+    50%{
+      opacity: 1;
+      transform: scale(1);
+    }
+    100%{
+      opacity: .2;
+      transform: scale(0);
+    }
+  }
+
+  
+  @keyframes louding-dots-two {
+    0%{
+      transform: scale(0);
+      opacity: .2;
+    }
+    50%{
+      opacity: 1;
+      transform: scale(1);
+    }
+    100%{
+      opacity: .2;
+      transform: scale(0);
+    }
+  }
+
+  
+  @keyframes louding-dots-three {
+    0%{
+      transform: scale(0);
+      opacity: .2;
+    }
+    50%{
+      opacity: 1;
+      transform: scale(1);
+    }
+    100%{
+      opacity: .2;
+      transform: scale(0);
+    }
   }
 
   @media (max-width: 860px){ 
